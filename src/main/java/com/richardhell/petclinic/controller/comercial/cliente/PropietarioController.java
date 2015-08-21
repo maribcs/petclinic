@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -75,6 +76,10 @@ public class PropietarioController {
     @RequestMapping("delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         propietarioDAO.deleteDAO(new Propietario(id));
+        return "redirect:/com/propietario";
+    }
+    @ExceptionHandler(Exception.class)
+    public String handleConflict() {
         return "redirect:/com/propietario";
     }
 }

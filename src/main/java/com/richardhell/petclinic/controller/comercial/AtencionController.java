@@ -34,7 +34,7 @@ public class AtencionController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("propietarios", visitaDAO.all());
-        return "comercial/cliente/propietario";
+        model.addAttribute("visitas", visitaDAO.all());
+        return "comercial/atencion";
     }
 }
