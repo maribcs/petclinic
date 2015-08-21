@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 
 <t:wrapper title="Atencion">
-    <a href="${pageContext.request.contextPath}/com/atencion/ingreso" class="pull-right btn btn-primary"> Nuevo</a>
+    <a href="${pageContext.request.contextPath}/com/atencion/new" class="pull-right btn btn-primary"> Nuevo</a>
     <h1 class="page-header"> Atencion </h1>    
     <table class="table table-striped">
         <tr>
@@ -30,7 +30,7 @@
                 </td>
                 <td>
                     <c:if test="${v.fechaSalida == null}">                             
-                    <a href="${pageContext.request.contextPath}/com/atencion/salida/${v.id}">Salida</a> 
+                    <a href="${pageContext.request.contextPath}/com/atencion/update/${v.id}">Salida</a> 
                     </c:if>
                 </td>
             </tr>
