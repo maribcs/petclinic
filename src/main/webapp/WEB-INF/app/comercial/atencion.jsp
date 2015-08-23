@@ -3,37 +3,55 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 
 <t:wrapper title="Atencion">
-    <a href="${pageContext.request.contextPath}/com/atencion/new" class="pull-right btn btn-primary"> Nuevo</a>
-    <h1 class="page-header"> Atencion </h1>    
+    <div class="head">
+        <h1 class="maintitle"> Visita </h1>
+        <a href="${pageContext.request.contextPath}/com/atencion/new" class="btn-default"> Nuevo</a>
+    </div>  
     <table class="table table-striped">
-        <tr>
-            <th class="col-md-10">Visitas</th>
-            <th class="col-md-2">Acciones</th>
-        </tr>
-        <c:forEach items="${visitas}" var="v"  >
+        <thead>
             <tr>
-                <td> 
-                    ${v.mascota.nombre}  
-                    <div class="row text-muted small">
-                        <div class="col-md-6">
-                            ${v.mascota.especie.nombre} <br/>
-                            ${v.mascota.raza.nombre}                            
-                        </div>
-                        <div class="col-md-6">
-                            Fecha Ingreso: <fmt:formatDate value="${v.fechaIngreso}" pattern="dd/MM/yyyy" /> <br/>
-                            Fecha Salida: 
-                            <c:if test="${v.fechaSalida != null}">
-                            <fmt:formatDate value="${v.fechaSalida}" pattern="dd/MM/yyyy" /> 
-                            </c:if>                           
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <c:if test="${v.fechaSalida == null}">                             
-                    <a href="${pageContext.request.contextPath}/com/atencion/update/${v.id}">Salida</a> 
-                    </c:if>
-                </td>
+                <th>Ingreso</th>
+                <th>Atencion</th>
+                <th>Salida</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
-        </c:forEach>
+        </thead>
+        <tbody>
+            <c:forEach items="${visitas}" var="v">
+                <tr>
+                    <td>
+                        <h4>${v.mascota.nombre}</h4>
+                        <div class="group2">
+                            Especie: ${v.mascota.especie.nombre} <br/>
+                            Raza: ${v.mascota.raza.nombre}
+                        </div>
+                        <div class="group2">
+                            Fecha Ingreso: <fmt:formatDate value="${v.fechaIngreso}" pattern="dd/MM/yyyy" /> <br/>
+                            Motivo: ${v.motivo}
+                        </div>
+                    </td>
+                    <td>
+                        Veterinario: ${v.veterinario.persona.nombreCompleto}
+                    </td>
+                    <td>                       
+                        <c:if test="${v.fechaSalida != null}">                 
+                            Fecha Salida: <fmt:formatDate value="${v.fechaSalida}" pattern="dd/MM/yyyy" /> <br/>
+                            Proxima Visita: <fmt:formatDate value="${v.proximaVisita}" pattern="dd/MM/yyyy" /> 
+
+                        </c:if>
+                    </td>
+                    <td>
+                        <span class="label label-${v.fechaSalida == null ? "success" :"danger" }">
+                            ${v.fechaSalida == null ? "Atencion" :"Finalizado" }
+                        </span>
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/com/atencion/update/${v.id}" class="action" title="Editar"><span class="icon-bin2"></span></a> 
+                        <a href="${pageContext.request.contextPath}/com/atencion/delete/${v.id}" class="action" title="Eliminar"><span class="icon-pencil"></span></a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
     </table>
 </t:wrapper>

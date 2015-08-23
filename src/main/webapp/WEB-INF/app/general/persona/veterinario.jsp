@@ -3,38 +3,41 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 
 <t:wrapper title="Veterinarios">
-    <a href="${pageContext.request.contextPath}/gen/veterinario/new" class="pull-right btn btn-primary"> Nuevo</a>
-    <h1 class="page-header"> Veterinarios </h1>
+    <div class="head">
+        <h1 class="maintitle"> Veterinarios </h1>
+        <a href="${pageContext.request.contextPath}/gen/veterinario/new" class="btn-default" ><span class="icon-plus"></span> Nuevo</a>
+    </div>
 
-
-    <table class="table table-striped">
-        <tr>
-            <th class="col-md-10">Veterinario</th>
-            <th class="col-md-2">Acciones</th>
-        </tr>
-        <c:forEach items="${veterinarios}" var="e"  >
+    <table>
+        <thead>
             <tr>
-                <td> 
-                    ${e.persona.nombreCompleto}  
-
-                    <div class="row text-muted small">
-                        <div class="col-md-6">
+                <th>Veterinario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${veterinarios}" var="e"  >
+                <tr>
+                    <td>
+                        <h4>${e.persona.nombreCompleto} </h4>
+                        <div class="group2">
                             Fecha de Ingreso: <fmt:formatDate value="${e.fechaRegistro}" pattern="dd/MM/yyyy" /> <br/>
                             ${e.persona.email} <br/>
                             ${e.persona.celular}
                         </div>
-                        <div class="col-md-6">
+                        <div class="group2">
                             ${e.persona.direccion} <br/>
                             ${e.persona.telefono}
                         </div>
-                    </div>
-                </td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/gen/veterinario/update/${e.id}">Editar</a> 
-                    <a href="${pageContext.request.contextPath}/gen/veterinario/delete/${e.id}">Eliminar</a>
-                </td>
-            </tr>
-        </c:forEach>
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/gen/veterinario/update/${e.id}" class="action" title="Editar"><span class="icon-bin2"></span></a> 
+                        <a href="${pageContext.request.contextPath}/gen/veterinario/delete/${e.id}" class="action" title="Eliminar"><span class="icon-pencil"></span></a>
+                    </td>
+                </tr>
+            </c:forEach>
+
+        </tbody>
     </table>
 
 

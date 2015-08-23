@@ -3,39 +3,39 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 
 <t:wrapper title="Propietarios">
-    <a href="${pageContext.request.contextPath}/com/propietario/new" class="pull-right btn btn-primary"> Nuevo</a>
-    <h1 class="page-header"> Propietarios </h1>
+    <div class="head">
+        <h1 class="maintitle"> Propietarios </h1>
+        <a href="${pageContext.request.contextPath}/com/propietario/new" class="btn-default"><span class="icon-plus"></span> Nuevo</a>
+    </div>
 
-
-    <table class="table table-striped">
-        <tr>
-            <th class="col-md-10">Propietarios</th>
-            <th class="col-md-2">Acciones</th>
-        </tr>
-        <c:forEach items="${propietarios}" var="p"  >
+    <table>        
+        <thead>
             <tr>
-                <td> 
-                    ${p.persona.nombreCompleto}  
-
-                    <div class="row text-muted small">
-                        <div class="col-md-6">
-                            Fecha de Ingreso: <fmt:formatDate value="${p.fechaRegistro}" pattern="dd/MM/yyyy" /> <br/>
+                <th>Propietarios</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${propietarios}" var="p">
+                <tr>
+                    <td>
+                        <h4>${p.persona.nombreCompleto}</h4>
+                        <div class="group2">
+                            Fecha de Registro: <fmt:formatDate value="${p.fechaRegistro}" pattern="dd/MM/yyyy" /> <br/>
                             ${p.persona.email} <br/>
                             ${p.persona.celular}
                         </div>
-                        <div class="col-md-6">
+                        <div class="group2">
                             ${p.persona.direccion} <br/>
                             ${p.persona.telefono}
                         </div>
-                    </div>
-                </td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/com/propietario/update/${p.id}">Editar</a> 
-                    <a href="${pageContext.request.contextPath}/com/propietario/delete/${p.id}">Eliminar</a>
-                </td>
-            </tr>
-        </c:forEach>
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/com/propietario/update/${p.id}" class="action"><span class="icon-bin2"></span>Editar</a> 
+                        <a href="${pageContext.request.contextPath}/com/propietario/delete/${p.id}" class="action"><span class="icon-pencil"></span>Eliminar</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>        
     </table>
-
-
 </t:wrapper>

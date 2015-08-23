@@ -1,0 +1,55 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-xp55m2');
+	src:url('fonts/icomoon.eot?#iefix-xp55m2') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?-xp55m2') format('truetype'),
+		url('fonts/icomoon.woff?-xp55m2') format('woff'),
+		url('fonts/icomoon.svg?-xp55m2#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+	content: "\e600";
+}
+.icon-pencil:before {
+	content: "\e604";
+}
+.icon-user:before {
+	content: "\e602";
+}
+.icon-lock:before {
+	content: "\e603";
+}
+.icon-bin2:before {
+	content: "\e601";
+}
+.icon-plus:before {
+	content: "\e605";
+}
+.icon-minus:before {
+	content: "\e606";
+}
+.icon-cross:before {
+	content: "\e607";
+}
+.icon-checkmark:before {
+	content: "\e608";
+}
+.icon-pawprint6:before {
+	content: "\e609";
+}

@@ -2,7 +2,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <t:wrapper title="Propietario">
-    <h1 class="page-header"> Propietario </h1>
+    <div class="head">
+        <h1 class="maintitle"> Propietario </h1>
+    </div>
 
     <form action="${pageContext.request.contextPath}/com/propietario/save" method="post">
         
@@ -11,9 +13,9 @@
         <jsp:include page="../../general/persona/personaForm.jsp" />
        
 
-        <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="${pageContext.request.contextPath}/com/propietario" class="btn btn-link">Cancelar</a>
+        <div class="form-group">
+            <button type="submit">Guardar</button>
+            <a href="${pageContext.request.contextPath}/com/propietario" class="btn-default">Cancelar</a>
         </div>
     </form>
             

@@ -14,7 +14,7 @@
 <div class="form-group">
     <label class="control-label"> Sexo </label>
 
-    <div class="form-control-static">
+    <div class="form-group-op">
         <label class="radio-inline">
             <input type="radio" name="persona.sexo" value="0" ${persona.sexo == 0 ? 'checked' : ''}> F
         </label>

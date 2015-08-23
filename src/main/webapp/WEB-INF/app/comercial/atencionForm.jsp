@@ -1,57 +1,75 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<t:wrapper title="Mascota">
-    <h1 class="page-header"> Visita </h1>
+<t:wrapper title="Atencion">
+    <div class="head">
+        <h1 class="maintitle"> Visita </h1>
+    </div>
 
-    <form action="${pageContext.request.contextPath}/com/mascota/save" method="post">
+    <form action="${pageContext.request.contextPath}/com/atencion/save" method="post">
 
-        <input type="hidden" name="visita.id" value="${visita.id}"/>
-
+        <input type="hidden" name="id" value="${visita.id}"/>
+        <div class="title-sec">Ingreso</div>
         <div class="form-group">
-            <label class="control-label"> Mascota </label>
+            <label> Mascota </label>
 
-            <select name="mascota.id" class="form-control" id="especie">
+            <select name="mascota.id">
                 <c:forEach items="${mascotas}" var="m" >
                     <option value="${m.id}"  ${visita.mascota.id == m.id ? 'selected': '' }> ${m.nombre} </option>
                 </c:forEach>
             </select>
         </div>
+        <div class="form-group">
+            <label class="control-label"> Fecha de Ingreso</label>
+            <input type="date" name="fechaIngreso" value="${visita.fechaIngreso}">
+        </div>
+        <div class="form-group">
+            <label class="control-label"> Fecha de Ingreso</label>
+            <input type="datetime" name="fechaIngreso" value="${visita.fechaIngreso}">
+        </div>
 
         <div class="form-group">
-            <label class="control-label"> Veterinario </label>
+            <label > Motivo </label>
+            <textarea name="motivo">${visita.motivo}</textarea>
+        </div>
 
-            <select name="veterninario.id" class="form-control" id="especie">
+        <div class="title-sec">Atencion</div>
+
+        <div class="form-group">
+            <label > Veterinario </label>
+
+            <select name="veterinario.id">
                 <c:forEach items="${veterinarios}" var="v" >
-                    <option value="${v.id}"  ${visita.veterinario.id == v.id ? 'selected': '' }> ${v.persona.nombres} ${v.persona.apellidos}</option>
+                    <option value="${v.id}"  ${visita.veterinario.id == v.id ? 'selected': '' }> ${v.persona.nombreCompleto}</option>
                 </c:forEach>
             </select>
         </div>
-
         <div class="form-group">
-            <label class="control-label"> Motivo </label>
-            <input type="text" class="form-control" name="visita.motivo" value="${visita.motivo}" required="">
-        </div>
-
-
-        <div class="form-group">
-            <label class="control-label"> Diagnóstico </label>
-            <input type="text" class="form-control" name="visita.diagnostico" value="${visita.diagnostico}">
+            <label> Diagnóstico </label>
+            <textarea name="diagnostico">${visita.diagnostico}</textarea>
         </div>
 
         <div class="form-group">
-            <label class="control-label"> Tratamiento </label>
-            <input type="text" class="form-control" name="visita.tratamiento" value="${visita.tratamiento}">
+            <label> Tratamiento </label>
+            <textarea name="tratamiento">${visita.tratamiento}</textarea>
         </div>
 
         <div class="form-group">
-            <label class="control-label"> Dieta </label>
-            <input type="text" class="form-control" name="visita.dieta" value="${visita.dieta}">
+            <label> Dieta </label>
+            <textarea name="dieta">${visita.dieta}</textarea>
+        </div>
+        <div class="title-sec">Salida</div>
+        <div class="form-group">
+            <label class="control-label"> Fecha de Salida</label>
+            <input type="date" name="fechaSalida" value="${visita.fechaSalida}">
+        </div>
+        <div class="form-group">
+            <label> Proxima Visita </label>
+            <input type="date" name="proximaVisita" value="${visita.proximaVisita}">
         </div>
 
-        <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="${pageContext.request.contextPath}/com/mascota" class="btn btn-link">Cancelar</a>
-        </div>
+        <button type="submit">Guardar</button>
+        <a href="${pageContext.request.contextPath}/com/atencion" class="btn-default">Cancelar</a>
+
     </form>
 </t:wrapper>
