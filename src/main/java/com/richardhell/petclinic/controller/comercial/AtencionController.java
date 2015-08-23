@@ -10,6 +10,7 @@ import com.richardhell.petclinic.dao.VeterinarioDAO;
 import com.richardhell.petclinic.dao.VisitaDAO;
 import com.richardhell.petclinic.model.Mascota;
 import com.richardhell.petclinic.model.Visita;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,10 +75,19 @@ public class AtencionController {
     }
     @RequestMapping("save")
     public String save(Visita vis) {
-
+        if(vis.isFinalizado()){
+            Date date = new Date();
+            vis.setFechaSalida(date);
+        }
+        else{
+            vis.setFechaSalida(null);
+        }
+        
         if (vis.getId() == null) {
+            Date date = new Date();
+            vis.setFechaIngreso(date);
             visitaDAO.saveDAO(vis);
-        } else {
+        } else {            
             visitaDAO.updateDAO(vis);
         }
         return "redirect:/com/atencion";
@@ -89,10 +99,23 @@ public class AtencionController {
         visitaDAO.deleteDAO(new Visita(id));
         return "redirect:/com/atencion";
     }
+    @RequestMapping("state/{id}")
+    public String state(@PathVariable("id") Long id) {
+        Visita visita = visitaDAO.find(new Visita(id));
+        if(visita.getFechaSalida()== null){
+            Date date = new Date();
+            visita.setFechaSalida(date);
+        }
+        else{
+            visita.setFechaSalida(null);
+        }
+        visitaDAO.updateDAO(visita);
+        return "redirect:/com/atencion";
+    }
     
     @ExceptionHandler(Exception.class)
     public String handleConflict() {
-        return "redirect:/com/propietario";
+        return "redirect:/com/atencion";
     }
 
     

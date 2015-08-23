@@ -47,6 +47,7 @@
                         </span>
                     </td>
                     <td>
+                        <a href="${pageContext.request.contextPath}/com/atencion/state/${v.id}" class="action label label-${v.fechaSalida == null ? "success" :"danger" }" title="Finalizar">Finalizar</a>
                         <a href="${pageContext.request.contextPath}/com/atencion/update/${v.id}" class="action" title="Editar"><span class="icon-bin2"></span></a> 
                         <a href="${pageContext.request.contextPath}/com/atencion/delete/${v.id}" class="action" title="Eliminar"><span class="icon-pencil"></span></a>
                     </td>

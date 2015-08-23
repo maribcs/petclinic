@@ -18,15 +18,7 @@
                     <option value="${m.id}"  ${visita.mascota.id == m.id ? 'selected': '' }> ${m.nombre} </option>
                 </c:forEach>
             </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label"> Fecha de Ingreso</label>
-            <input type="date" name="fechaIngreso" value="${visita.fechaIngreso}">
-        </div>
-        <div class="form-group">
-            <label class="control-label"> Fecha de Ingreso</label>
-            <input type="datetime" name="fechaIngreso" value="${visita.fechaIngreso}">
-        </div>
+        </div>      
 
         <div class="form-group">
             <label > Motivo </label>
@@ -59,9 +51,10 @@
             <textarea name="dieta">${visita.dieta}</textarea>
         </div>
         <div class="title-sec">Salida</div>
-        <div class="form-group">
-            <label class="control-label"> Fecha de Salida</label>
-            <input type="date" name="fechaSalida" value="${visita.fechaSalida}">
+        <div class="form-group-op">
+            <label class="radio-inline">
+                <input type="checkbox" id="finalizado" name="finalizado" value="${visita.fechaSalida != null ? '1' : '0'}" ${visita.fechaSalida != null ? 'checked' : ''}> Salida
+            </label>
         </div>
         <div class="form-group">
             <label> Proxima Visita </label>
@@ -72,4 +65,13 @@
         <a href="${pageContext.request.contextPath}/com/atencion" class="btn-default">Cancelar</a>
 
     </form>
+        <script>
+            $("#finalizado").change(function(){
+               if($(this).is(":checked")){
+                   $(this).val('1');
+               } else {
+                   $(this).val('0');
+               }
+            });
+        </script>
 </t:wrapper>
